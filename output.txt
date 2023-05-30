@@ -1,0 +1,12 @@
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df = sns.load_dataset('titanic')
+df.isnull().sum()
+df.describe()
+df.drop('deck',axis=1)
+median = df['age'].median()
+df['age'].fillna(median,inplace = True)
+df.drop(['deck','embark_town','embarked'],axis=1)
+pd.get_dummies(df,drop_first=True)

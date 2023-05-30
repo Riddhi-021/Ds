@@ -1,0 +1,17 @@
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df = pd.read_csv('exam.csv')
+df.dtypes 
+from pandas.plotting import scatter_matrix   # outlier
+num_attribs=['raisedhands','VisITedResources','AnnouncementsView','Discussion']
+scatter_matrix(df[num_attribs],figsize=(12,8))
+import seaborn as sns
+sns.pairplot(df)
+df['Discussion'].describe()
+from sklearn.preprocessing import StandardScaler
+sc=StandardScaler()
+df[['raisedhands']]=sc.fit_transform(df[['raisedhands']])
+sns.scatterplot(df['raisedhands'])
+df['raisedhands'].describe()
